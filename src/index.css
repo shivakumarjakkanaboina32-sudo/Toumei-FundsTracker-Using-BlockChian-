@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- GLOBAL STYLES --- */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #050505; 
+  color: white;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Scrollbar for Dark Mode */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a; 
+}
+::-webkit-scrollbar-thumb {
+  background: #333; 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+/* --- UTILITY CLASSES --- */
+.font-jakarta {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Glassmorphism Cards - Keeping a slight transparent background for contrast */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05); /* Very slight white tint */
+  /* backdrop-filter: blur(1px); <-- Removed heavy blur */
+  -webkit-backdrop-filter: blur(1px); /* Slight blur retained for element distinction */
+  border: 1px solid rgba(255, 255, 255, 0.15); /* Increased border visibility */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-glass {
+  background: rgba(0, 0, 0, 0.1); /* Very light dark tint */
+  backdrop-filter: blur(10px); /* Keep slight blur for sidebar distinction */
+  -webkit-backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- ANIMATIONS --- */
+
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes popIn {
+  0% { opacity: 0; transform: translate(-50%, 20px) scale(0.9); }
+  100% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+}
+
+.animate-pop-in {
+  animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes droneFloat {
+  0%, 100% { transform: translate(-50%, -6px); }
+  50% { transform: translate(-50%, 4px); }
+}
+
+.animate-drone {
+  animation: droneFloat 3s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes trailMove {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-trail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+  animation: trailMove 2s linear infinite;
+}
